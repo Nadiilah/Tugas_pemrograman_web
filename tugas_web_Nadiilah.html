@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Pribadi | Nadiilah</title>
+  <style>
+    /* =========================
+       1. WARNA DAN PENGATURAN
+    ========================= */
+    :root {
+      --maroon: #650d19;
+      --red: #a62d3b;
+      --red-light: #d56b6d;
+      --black: #191716;
+      --black-soft: #292321;
+      --beige: #e8d6bd;
+      --cream: #f8f0e5;
+      --white: #fffaf4;
+      --text: #382923;
+      --muted: #806d60;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    /* =========================
+       BACKGROUND: AURORA + PARTIKEL + HEXAGON
+    ========================= */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background-color: var(--cream);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* LAPIS 1: Aurora gradient bergerak */
+    .bg-aurora {
+      position: fixed;
+      inset: -20%;
+      z-index: -4;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(213, 107, 109, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 80% 70%, rgba(101, 13, 25, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(232, 214, 189, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 70% 15%, rgba(166, 45, 59, 0.22) 0%, transparent 60%);
+      filter: blur(20px);
+      animation: auroraFlow 24s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes auroraFlow {
+      0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+      33%  { transform: translate(3%, -2%) rotate(3deg) scale(1.08); }
+      66%  { transform: translate(-2%, 3%) rotate(-2deg) scale(1.05); }
+      100% { transform: translate(2%, -3%) rotate(2deg) scale(1.1); }
+    }
+
+    /* LAPIS 2: Pola hexagon berputar */
+    .bg-hexagons {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.35;
+    }
+
+    .bg-hexagons::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220vmax;
+      height: 220vmax;
+      transform: translate(-50%, -50%);
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='92' viewBox='0 0 80 92'><polygon points='40,2 78,23 78,69 40,90 2,69 2,23' fill='none' stroke='%23a62d3b' stroke-width='0.8' opacity='0.5'/></svg>");
+      background-size: 80px 92px;
+      animation: hexRotate 90s linear infinite;
+      mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 70%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 70%);
+    }
+
+    @keyframes hexRotate {
+      0%   { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* LAPIS 3: Partikel bercahaya melayang */
+    .bg-particles {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-particles span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffd8c2 0%, #d56b6d 40%, transparent 70%);
+      box-shadow: 0 0 20px rgba(213, 107, 109, 0.6), 0 0 40px rgba(166, 45, 59, 0.3);
+      animation: particleFloat linear infinite;
+      opacity: 0;
+    }
+
+    /* Generate multiple particles with different sizes, positions, timings */
+    .bg-particles span:nth-child(1) {
+      width: 8px; height: 8px;
+      left: 8%; bottom: -10%;
+      animation-duration: 18s;
+      animation-delay: 0s;
+    }
+    .bg-particles span:nth-child(2) {
+      width: 12px; height: 12px;
+      left: 18%; bottom: -10%;
+      animation-duration: 22s;
+      animation-delay: 2s;
+    }
+    .bg-particles span:nth-child(3) {
+      width: 6px; height: 6px;
+      left: 28%; bottom: -10%;
+      animation-duration: 16s;
+      animation-delay: 4s;
+    }
+    .bg-particles span:nth-child(4) {
+      width: 14px; height: 14px;
+      left: 38%; bottom: -10%;
+      animation-duration: 26s;
+      animation-delay: 1s;
+    }
+    .bg-particles span:nth-child(5) {
+      width: 9px; height: 9px;
+      left: 48%; bottom: -10%;
+      animation-duration: 20s;
+      animation-delay: 3s;
+    }
+    .bg-particles span:nth-child(6) {
+      width: 7px; height: 7px;
+      left: 58%; bottom: -10%;
+      animation-duration: 24s;
+      animation-delay: 5s;
+    }
+    .bg-particles span:nth-child(7) {
+      width: 11px; height: 11px;
+      left: 68%; bottom: -10%;
+      animation-duration: 19s;
+      animation-delay: 0.5s;
+    }
+    .bg-particles span:nth-child(8) {
+      width: 5px; height: 5px;
+      left: 78%; bottom: -10%;
+      animation-duration: 17s;
+      animation-delay: 2.5s;
+    }
+    .bg-particles span:nth-child(9) {
+      width: 13px; height: 13px;
+      left: 88%; bottom: -10%;
+      animation-duration: 28s;
+      animation-delay: 4.5s;
+    }
+    .bg-particles span:nth-child(10) {
+      width: 10px; height: 10px;
+      left: 95%; bottom: -10%;
+      animation-duration: 21s;
+      animation-delay: 1.5s;
+    }
+    .bg-particles span:nth-child(11) {
+      width: 6px; height: 6px;
+      left: 13%; bottom: -10%;
+      animation-duration: 23s;
+      animation-delay: 6s;
+    }
+    .bg-particles span:nth-child(12) {
+      width: 15px; height: 15px;
+      left: 43%; bottom: -10%;
+      animation-duration: 27s;
+      animation-delay: 7s;
+    }
+    .bg-particles span:nth-child(13) {
+      width: 8px; height: 8px;
+      left: 63%; bottom: -10%;
+      animation-duration: 15s;
+      animation-delay: 3.5s;
+    }
+    .bg-particles span:nth-child(14) {
+      width: 9px; height: 9px;
+      left: 83%; bottom: -10%;
+      animation-duration: 25s;
+      animation-delay: 5.5s;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.8);
+        opacity: 0;
+      }
+      10% { opacity: 0.9; }
+      50% {
+        transform: translateY(-50vh) translateX(30px) scale(1.1);
+        opacity: 0.7;
+      }
+      90% { opacity: 0.4; }
+      100% {
+        transform: translateY(-105vh) translateX(-30px) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    /* LAPIS 4: Grid halus berdenyut sebagai tekstur akhir */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(101, 13, 25, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(101, 13, 25, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPulse 10s ease-in-out infinite;
+      pointer-events: none;
+      mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 90%);
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.3; }
+      50%      { opacity: 0.7; }
+    }
+
+    /* Konten di atas background */
+    .container, nav, footer, section {
+      position: relative;
+      z-index: 1;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* =========================
+       2. NAVIGASI
+    ========================= */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      color: var(--maroon);
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--red-light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-contact {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      transition: 0.3s;
+      box-shadow: 0 4px 14px rgba(101, 13, 25, 0.25);
+    }
+
+    .nav-contact:hover {
+      background: var(--red);
+      box-shadow: 0 6px 20px rgba(166, 45, 59, 0.4);
+    }
+
+    .line {
+      border: none;
+      border-top: 1px solid #dfc8b4;
+    }
+
+    /* =========================
+       3. HERO / PROFIL UTAMA
+    ========================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+      padding: 65px 0 80px;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 {
+      font-size: clamp(43px, 5.5vw, 70px);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero h1 .period {
+      color: var(--maroon);
+    }
+
+    .job-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      max-width: 430px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 27px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 21px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button-primary {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 6px 18px rgba(166, 45, 59, 0.3);
+    }
+
+    .button-primary:hover {
+      background: var(--maroon);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(101, 13, 25, 0.4);
+    }
+
+    .button-outline {
+      border: 1px solid #c9ad95;
+      color: var(--text);
+      background: rgba(248, 240, 229, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .button-outline:hover {
+      background: var(--beige);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 440px;
+      background:
+        radial-gradient(
+          circle at 70% 30%,
+          #d8a58b 0,
+          #b84e4e 38%,
+          #650d19 78%
+        );
+      border-radius: 48% 48% 18px 18px;
+      overflow: visible;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 48% 48% 18px 18px;
+      border: 5px solid var(--beige);
+      box-shadow: 0 18px 45px #30060d30;
+    }
+
+    .status-card {
+      position: absolute;
+      right: -22px;
+      bottom: 24px;
+      width: 235px;
+      padding: 20px;
+      background: #f8f0e5f2;
+      border: 1px solid #ffffffaa;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px #26060b25;
+      backdrop-filter: blur(10px);
+    }
+
+    .status-label {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .status-card h3 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .status-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* =========================
+       4. INFORMASI SINGKAT
+    ========================= */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 25px 0;
+      gap: 20px;
+      border-top: 1px solid #dfc8b4;
+      border-bottom: 1px solid #dfc8b4;
+      background: rgba(248, 240, 229, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .highlight {
+      text-align: center;
+    }
+
+    .highlight h3 {
+      font-size: 15px;
+      color: var(--maroon);
+      margin-bottom: 3px;
+    }
+
+    .highlight p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       5. TENTANG SAYA
+    ========================= */
+    .about {
+      padding: 80px 0 65px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 39px);
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 17px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .detail-card {
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(232, 214, 189, 0.75);
+      border: 1px solid #dfc8b4;
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(101, 13, 25, 0.1);
+    }
+
+    .detail-card h3 {
+      color: var(--maroon);
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .detail-card p {
+      color: #6e5748;
+      font-size: 12px;
+    }
+
+    /* =========================
+       6. KEAHLIAN
+    ========================= */
+    .skills {
+      background: var(--black);
+      color: var(--white);
+      padding: 55px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background:
+        conic-gradient(from 0deg at 50% 50%,
+          rgba(166, 45, 59, 0.35) 0deg,
+          transparent 90deg,
+          rgba(213, 107, 109, 0.2) 180deg,
+          transparent 270deg,
+          rgba(101, 13, 25, 0.3) 360deg);
+      animation: conicSpin 22s linear infinite;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    @keyframes conicSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .skills .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills .section-title {
+      color: var(--white);
+    }
+
+    .skills-description {
+      color: #d2c2b4;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      border: 1px solid #72594c;
+      background: var(--black-soft);
+      color: var(--beige);
+      padding: 10px 19px;
+      border-radius: 30px;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      border-color: var(--red-light);
+      background: #3a2a28;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(166, 45, 59, 0.3);
+    }
+
+    /* =========================
+       7. PORTOFOLIO
+    ========================= */
+    .portfolio {
+      padding: 80px 0;
+    }
+
+    .portfolio-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .portfolio-heading .section-title {
+      max-width: 460px;
+      margin-bottom: 0;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid #ead9c7;
+      border-radius: 16px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px #4d1a1514;
+    }
+
+    .project-art {
+      height: 210px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .art-one {
+      background: linear-gradient(135deg, #f0d8c0, #b45a50);
+    }
+
+    .art-two {
+      background: linear-gradient(135deg, #292321, #76232d);
+    }
+
+    .art-three {
+      background: linear-gradient(135deg, #dfc8ae, #f8f0e5);
+    }
+
+    .art-symbol {
+      font-size: 55px;
+      font-weight: 800;
+      color: #fff5e8;
+      text-shadow: 0 5px 20px #00000020;
+    }
+
+    .art-two .art-symbol {
+      color: var(--beige);
+    }
+
+    .art-three .art-symbol {
+      color: var(--maroon);
+    }
+
+    .project-content {
+      padding: 19px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      color: var(--red);
+      background: #f3e4d8;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-content h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .project-content p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       8. KUTIPAN / MOTIVASI
+    ========================= */
+    .quote {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 28px;
+      background: rgba(237, 223, 207, 0.8);
+      border-radius: 18px;
+      margin-bottom: 75px;
+      backdrop-filter: blur(8px);
+      border: 1px solid #e5d2c0;
+      box-shadow: 0 10px 30px rgba(101, 13, 25, 0.06);
+    }
+
+    .quote-mark {
+      color: var(--red);
+      font-size: 55px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .quote p {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .quote small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    /* =========================
+       9. KONTAK DAN FOOTER
+    ========================= */
+    footer {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 45px 0 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 250, 244, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(213, 107, 109, 0.2) 0%, transparent 50%);
+      animation: footerGlow 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes footerGlow {
+      0% { opacity: 0.5; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer h2 {
+      font-size: 27px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      color: #e5cfc0;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      border: 1px solid #bd8a7b;
+      border-radius: 25px;
+      padding: 9px 15px;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+      background: var(--red);
+      border-color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #88414a;
+      padding-top: 18px;
+      text-align: center;
+      color: #d9bcb1;
+      font-size: 11px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================
+       10. RESPONSIVE
+    ========================= */
+    @media (max-width: 800px) {
+      .nav-links { gap: 14px; }
+      .nav-contact { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 45px 0 55px;
+      }
+
+      .hero-visual {
+        max-width: 480px;
+        width: 100%;
+        margin: auto;
+        min-height: 400px;
+      }
+
+      .profile-photo { height: 400px; }
+      .status-card { right: 10px; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .portfolio-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .footer-main {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      /* Reduce particle count effect on mobile */
+      .bg-particles span:nth-child(n+11) { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: 88%; }
+      nav { padding: 18px 0; }
+      .logo { font-size: 23px; }
+
+      .nav-links { gap: 10px; font-size: 11px; }
+
+      .hero h1 { font-size: 46px; }
+      .hero-visual { min-height: 330px; }
+      .profile-photo { height: 330px; }
+
+      .status-card {
+        width: 195px;
+        padding: 14px;
+        bottom: 12px;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .about, .portfolio { padding: 55px 0; }
+      .about-details { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-art { height: 220px; }
+
+      .quote {
+        padding: 20px;
+        gap: 12px;
+      }
+
+      .quote p { font-size: 13px; }
+      footer h2 { font-size: 24px; }
+
+      /* Further reduce particles on small screens */
+      .bg-particles span:nth-child(n+6) { display: none; }
+      .bg-hexagons { opacity: 0.2; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-aurora, .bg-hexagons::before, .bg-particles span,
+      body::after, .skills::before, footer::before {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background aurora -->
+  <div class="bg-aurora" aria-hidden="true"></div>
+
+  <!-- Background hexagon berputar -->
+  <div class="bg-hexagons" aria-hidden="true"></div>
+
+  <!-- Background partikel bercahaya -->
+  <div class="bg-particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- NAVIGASI -->
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">N<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#portfolio">Karya</a>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+      </div>
+
+      <a href="#contact" class="nav-contact">
+        Hubungi Saya ↗
+      </a>
+    </nav>
+
+    <hr class="line">
+
+    <!-- PROFIL UTAMA -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <p class="eyebrow">SELAMAT DATANG DI WEBSITE SAYA</p>
+
+        <h1>
+          Halo, Saya<br>
+          <span>Nadiilah</span><span class="period">.</span>
+        </h1>
+
+        <p class="job-title">Mahasiswa Ilmu Komputer</p>
+
+        <p class="description">
+          Saya adalah mahasiswa yang tertarik pada teknologi
+          informasi, desain, dan pengembangan website.
+          Saya senang belajar hal baru, mengeksplorasi ide,
+          dan mengembangkan kreativitas melalui teknologi.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#portfolio" class="button button-primary">
+            Lihat Karya Saya ↗
+          </a>
+
+          <a href="#about" class="button button-outline">
+            Tentang Saya
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="profil-pribadi.png.png"
+          alt="Foto profil Nadila"
+          class="profile-photo"
+        >
+
+        <div class="status-card">
+          <div class="status-label">● PROFIL PRIBADI</div>
+          <h3>Belajar dan berkembang.</h3>
+          <p>
+            Terus mengeksplorasi teknologi, kreativitas,
+            dan pengalaman baru.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMASI SINGKAT -->
+    <section class="highlights">
+      <div class="highlight">
+        <h3>Ilmu Komputer</h3>
+        <p>Bidang pendidikan</p>
+      </div>
+
+      <div class="highlight">
+        <h3>Teknologi</h3>
+        <p>Bidang yang diminati</p>
+      </div>
+
+      <div class="highlight">
+        <h3>Kreativitas</h3>
+        <p>Semangat berkarya</p>
+      </div>
+    </section>
+
+    <!-- TENTANG SAYA -->
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">TENTANG SAYA</p>
+          <h2 class="section-title">
+            Mengenal saya lebih dekat.
+          </h2>
+        </div>
+
+        <div>
+          <p class="about-text">
+            Halo! Saya Nadiilah, mahasiswa Ilmu Komputer yang
+            memiliki ketertarikan pada perkembangan teknologi
+            dan dunia digital. Saya senang mempelajari hal-hal
+            baru, mengembangkan keterampilan, serta mencoba
+            berbagai proyek untuk menambah pengalaman.
+            Bagi saya, setiap proses adalah kesempatan
+            untuk bertumbuh dan menjadi lebih baik.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-details" style="margin-top: 28px;">
+        <div class="detail-card">
+          <h3>Pendidikan</h3>
+          <p>Mahasiswa Ilmu Komputer</p>
+          <p>Universitas Muhammadiyah Bangka Belitung.</p>
+        </div>
+
+        <div class="detail-card">
+          <h3>Minat</h3>
+          <p>Teknologi informasi, desain, pemrograman,
+             dan pengembangan web.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- KEAHLIAN -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <p class="eyebrow">KEMAMPUAN SAYA</p>
+
+      <h2 class="section-title">
+        Hal yang sedang saya pelajari.
+      </h2>
+
+      <p class="skills-description">
+        Beberapa keterampilan yang saya pelajari dan kembangkan.
+      </p>
+
+      <div class="skill-list">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">Python</span>
+        <span class="skill">Data Science</span>
+        <span class="skill">Machine Learning</span>
+        <span class="skill">Desain Digital</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTOFOLIO -->
+  <div class="container">
+    <section class="portfolio" id="portfolio">
+      <p class="eyebrow">PROYEK PILIHAN</p>
+
+      <div class="portfolio-heading">
+        <h2 class="section-title">
+          Belajar, mencoba, dan menciptakan sesuatu.
+        </h2>
+
+        <a href="#contact" class="button button-outline">
+          Hubungi Saya ↗
+        </a>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="project-card">
+          <div class="project-art art-one">
+            <span class="art-symbol">01</span>
+          </div>
+
+          <div class="project-content">
+            <span class="project-tag">WEB DEVELOPMENT</span>
+            <h3>Website Profil Pribadi</h3>
+            <p>
+              Website untuk memperkenalkan diri dan menampilkan
+              informasi pribadi secara digital.
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art art-two">
+            <span class="art-symbol">02</span>
+          </div>
+
+          <div class="project-content">
+            <span class="project-tag">DATA SCIENCE</span>
+            <h3>Analisis Data</h3>
+            <p>
+              Proyek pembelajaran pengolahan data dan
+              eksplorasi informasi menggunakan Python.
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-art art-three">
+            <span class="art-symbol">03</span>
+          </div>
+
+          <div class="project-content">
+            <span class="project-tag">CREATIVE PROJECT</span>
+            <h3>Karya Digital</h3>
+            <p>
+              Eksplorasi kreativitas melalui ide, desain,
+              dan pembuatan konten digital.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- MOTIVASI -->
+    <section class="quote">
+      <div class="quote-mark">“</div>
+
+      <div>
+        <p>
+          Tidak harus langsung sempurna.
+          Terus belajar, berani mencoba, dan berkembang
+          adalah bagian dari perjalanan.
+        </p>
+        <small>— Prinsip dalam proses belajar saya</small>
+      </div>
+    </section>
+  </div>
+
+  <!-- KONTAK -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <div>
+          <p class="eyebrow">MARI TERHUBUNG</p>
+          <h2>Mari ciptakan sesuatu<br>yang bermakna.</h2>
+          <p>Terima kasih telah mengunjungi website saya.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="mailto:nadiilahdila067@gmail.com">Email ↗</a>
+          <a href="https://instagram.com/nadiilah_14"
+             target="_blank"
+             rel="noopener noreferrer">
+            Instagram ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Nadiilah · Website Profil Pribadi
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
