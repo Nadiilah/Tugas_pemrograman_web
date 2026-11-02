@@ -1,0 +1,273 @@
+
+/* ==============================
+   1. PENGATURAN DASAR
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: #FBF5D2;
+    color: #441004;
+    line-height: 1.7;
+}
+
+/* ==============================
+   2. HEADER
+============================== */
+
+header {
+    background: linear-gradient(135deg, #441004, #79380B, #AD6D15);
+    color: #FBF5D2;
+    text-align: center;
+    padding: 45px 20px 30px;
+    border-bottom: 5px solid #EFBB55;
+}
+
+header h1 {
+    font-size: 42px;
+    letter-spacing: 7px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #FBF5D2;
+}
+
+header p {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #FEE39F;
+    margin-bottom: 28px;
+}
+
+/* ==============================
+   3. NAVIGASI
+============================== */
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FBF5D2;
+    padding: 10px 20px;
+    border: 1px solid #EFBB55;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #EFBB55;
+    color: #441004;
+    transform: translateY(-3px);
+}
+
+/* ==============================
+   4. BAGIAN UTAMA
+============================== */
+
+main {
+    width: 85%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+section {
+    background: #FBF5D2;
+    padding: 30px 35px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #AD6D15;
+    box-shadow: 0 5px 18px rgba(68, 16, 4, 0.10);
+    transition: 0.3s;
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(68, 16, 4, 0.15);
+}
+
+section h2 {
+    color: #79380B;
+    font-size: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #EFBB55;
+    padding-bottom: 10px;
+}
+
+section p {
+    font-size: 15px;
+    color: #79380B;
+    margin-bottom: 15px;
+}
+
+/* ==============================
+   5. ORDERED LIST
+   KATEGORI PERHIASAN
+============================== */
+
+#kategori ol {
+    padding-left: 30px;
+}
+
+#kategori li {
+    padding: 7px 12px;
+    margin-bottom: 8px;
+    color: #441004;
+    background: #FEE39F;
+    border-radius: 8px;
+}
+
+#kategori li::marker {
+    color: #AD6D15;
+    font-weight: bold;
+}
+
+/* ==============================
+   6. UNORDERED LIST
+   KOLEKSI PILIHAN
+============================== */
+
+#koleksi ul {
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 25px;
+}
+
+#koleksi li {
+    list-style-type: square;
+    padding: 12px;
+    background: #FEE39F;
+    color: #441004;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+#koleksi li::marker {
+    color: #AD6D15;
+}
+
+#koleksi li:hover {
+    background: #EFBB55;
+    transform: translateX(5px);
+}
+
+/* ==============================
+   7. DEFINITION LIST
+   INFORMASI PERHIASAN
+============================== */
+
+#informasi dl {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 10px 20px;
+}
+
+#informasi dt {
+    color: #79380B;
+    font-weight: bold;
+    background: #FEE39F;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#informasi dd {
+    color: #79380B;
+    background: #FBF5D2;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* ==============================
+   8. DEFINITION LIST
+   DAFTAR PILIHAN
+============================== */
+
+#pilihan dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+}
+
+#pilihan dt {
+    background: #79380B;
+    color: #FBF5D2;
+    padding: 13px;
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+}
+
+#pilihan dd {
+    background: #FEE39F;
+    color: #441004;
+    padding: 10px 13px;
+    border-radius: 0 0 8px 8px;
+    margin-top: -12px;
+}
+
+/* ==============================
+   9. FOOTER
+============================== */
+
+footer {
+    background: #441004;
+    color: #FBF5D2;
+    text-align: center;
+    padding: 25px;
+    border-top: 4px solid #EFBB55;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* ==============================
+   10. TAMPILAN HP
+============================== */
+
+@media screen and (max-width: 768px) {
+
+    header h1 {
+        font-size: 30px;
+        letter-spacing: 4px;
+    }
+
+    main {
+        width: 92%;
+    }
+
+    section {
+        padding: 22px;
+    }
+
+    #koleksi ul {
+        grid-template-columns: 1fr;
+    }
+
+    #informasi dl {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    #pilihan dl {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 8px 13px;
+        font-size: 12px;
+    }
+}
